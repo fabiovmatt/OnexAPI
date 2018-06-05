@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Mvc.Models.MvcMaterialModel>
+
+@{
+    ViewBag.Title = "Index";
+
+}
+<br/>
+
+<a href="@Url.Action("AddOrEdit","Material")" class="btn btn-default"><i class="fa fa-plus-circle"></i> Cadastrar novo</a>
+
+<p>
+    
+</p>
+<table class="table table-striped">
+    <thead class="table-heading">
+
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MaterialID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tipo)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaterialID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tipo)
+            </td>
+
+            <td>
+                <a href="@Url.Action("AddOrEdit", "Material", new { id = item.MaterialID})" class="btn btn-default"><i class="fa fa-pencil"></i>Editar</a>
+                <a onclick="Delete(@item.MaterialID)" class="btn btn-default"><i class="fa fa-trash"></i>Delete</a>
+            </td>
+
+
+        </tr>
+    }
+
+</table>
+
+
+
+@section scripts{
+    <script>
+        $(function () {
+            var successMessage = '@TempData["SuccessMessage"]'
+            if (successMessage != '')
+                alertify.success(successMessage);
+        });
+
+        function Delete(id) {
+            alertify.confirm('Web Api CRUD Operations','Tem certeza que deseja deletar ?',function(){
+                window.location.href  = '@Url.Action("Delete","Material")/'+id;
+            },null );
+        }
+    </script>
+}
