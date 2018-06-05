@@ -1,0 +1,6 @@
+﻿<parameters>
+  <parameter name="IIS Web Application Name" defaultValue="DefaultWebSite/OneX" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^c:\\Users\\fabio\\source\\repos\\OnexAPI\\Mvc\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^c:\\Users\\fabio\\source\\repos\\OnexAPI\\Mvc\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+</parameters>
